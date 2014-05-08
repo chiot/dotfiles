@@ -1,0 +1,56 @@
+set textwidth=0
+set nobackup
+set autoread
+set noswapfile
+set hidden
+set showcmd
+set showmode
+set nocompatible
+set smartcase
+set ignorecase
+set cmdheight=2
+set laststatus=2
+
+set number
+set numberwidth=5
+set showmatch
+set matchtime=2
+set cursorline
+set ruler
+set visualbell
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set incsearch
+set hlsearch
+set ambiwidth=double
+
+if has('mouse')
+    set mouse=a
+endif
+
+syntax on
+colorscheme jellybeans
+
+autocmd BufNewFile,BufRead *.{md,mdwn,mdk,mkdn,mark*} set filetype=markdown
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
+
+filetype plugin indent on
+
+NeoBundleCheck
+
+let g:vimfiler_as_default_explorer=1
+
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
