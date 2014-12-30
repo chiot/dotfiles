@@ -5,7 +5,6 @@ set noswapfile
 set hidden
 set showcmd
 set showmode
-set nocompatible
 set smartcase
 set ignorecase
 set cmdheight=2
@@ -14,7 +13,7 @@ set laststatus=2
 set number
 set numberwidth=5
 set showmatch
-set matchtime=2
+set matchtime=1
 set cursorline
 set ruler
 set visualbell
@@ -27,34 +26,49 @@ set incsearch
 set hlsearch
 set ambiwidth=double
 
-if has('mouse')
-    set mouse=a
-endif
+set statusline=%<\ %f\ %m%r%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%v
 
 syntax on
-colorscheme jellybeans
+
+if has('mouse')
+  set mouse=a
+endif
 
 autocmd BufNewFile,BufRead *.{md,mdwn,mdk,mkdn,mark*} set filetype=markdown
 
 if has('vim_starting')
+  if &compatible
+    set nocompatible
+  endif
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vinarise'
+NeoBundle 'Shougo/neocomplete'
 
+call neobundle#end()
+
+filetype on
 filetype plugin indent on
 
 NeoBundleCheck
 
 let g:vimfiler_as_default_explorer=1
+let g:vinarise_enable_auto_detect=1
+let g:neocomplete#enable_at_startup=1
+let g:neocomplete#enable_smart_case=1
 
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
+colorscheme jellybeans
+
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr><C-h> neocomplete#close_popup()."<C-h>"
 
 imap () ()<LEFT>
 imap [] []<LEFT>
