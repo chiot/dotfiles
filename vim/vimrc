@@ -70,9 +70,5 @@ colorscheme jellybeans
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><C-h> neocomplete#close_popup()."<C-h>"
 
-imap () ()<LEFT>
-imap [] []<LEFT>
-imap {} {}<LEFT>
-imap <> <><LEFT>
-imap '' ''<LEFT>
-imap "" ""<LEFT>
+autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType make setlocal noexpandtab
