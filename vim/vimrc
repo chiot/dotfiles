@@ -68,7 +68,8 @@ let g:neocomplete#enable_smart_case=1
 colorscheme jellybeans
 
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr><C-h> neocomplete#close_popup()."<C-h>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 
 autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType make setlocal noexpandtab
+
