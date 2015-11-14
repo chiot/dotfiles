@@ -3,11 +3,12 @@ set nobackup
 set autoread
 set noswapfile
 set hidden
+set nowrap
 set showcmd
 set showmode
 set smartcase
 set ignorecase
-set cmdheight=2
+set cmdheight=1
 set laststatus=2
 
 set number
@@ -24,17 +25,15 @@ set softtabstop=4
 set expandtab
 set incsearch
 set hlsearch
+set nowrapscan
 set ambiwidth=double
-
+set tags+=.ctags/tags
+set clipboard+=unnamed
 set statusline=%<\ %f\ %m%r%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%v
-
-syntax on
 
 if has('mouse')
   set mouse=a
 endif
-
-autocmd BufNewFile,BufRead *.{md,mdwn,mdk,mkdn,mark*} set filetype=markdown
 
 if has('vim_starting')
   if &compatible
@@ -47,11 +46,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/vinarise'
-NeoBundle 'Shougo/neocomplete'
+NeoBundle 'altercation/vim-colors-solarized'
 
 call neobundle#end()
 
@@ -60,16 +57,20 @@ filetype plugin indent on
 
 NeoBundleCheck
 
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_source_file_mru_limit=200
 let g:vimfiler_as_default_explorer=1
-let g:vinarise_enable_auto_detect=1
-let g:neocomplete#enable_at_startup=1
-let g:neocomplete#enable_smart_case=1
+let g:solarized_bold=0
 
-colorscheme jellybeans
+syntax on
+set background=dark
+colorscheme solarized
 
-inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+vnoremap * "zy:let @/=@z<CR>n
 
-autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType make setlocal noexpandtab
+autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType xml  setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd BufNewFile,BufRead *.{md,mdwn,mdk,mkdn,mark*} set filetype=markdown
 
