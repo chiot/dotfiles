@@ -3,7 +3,6 @@ PS1='\w\$ '
 export GREP_OPTIONS='--color=auto'
 
 alias ls='ls -G'
-alias ctags="`brew --prefix`/bin/ctags"
 
 #if [ -z "$TMUX" -a -z "$STY" ]; then
 #    if type tmux >/dev/null 2>&1; then

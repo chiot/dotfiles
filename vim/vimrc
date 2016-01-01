@@ -8,11 +8,10 @@ set showcmd
 set showmode
 set smartcase
 set ignorecase
-set cmdheight=1
+set cmdheight=2
 set laststatus=2
 
 set number
-set numberwidth=5
 set showmatch
 set matchtime=1
 set cursorline
@@ -48,7 +47,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'w0ng/vim-hybrid'
 
 call neobundle#end()
 
@@ -61,11 +60,11 @@ let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable=1
 let g:unite_source_file_mru_limit=200
 let g:vimfiler_as_default_explorer=1
-let g:solarized_bold=0
+let g:hybrid_use_Xresources=1
 
 syntax on
 set background=dark
-colorscheme solarized
+colorscheme hybrid
 
 vnoremap * "zy:let @/=@z<CR>n
 
