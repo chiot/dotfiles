@@ -6,7 +6,6 @@ export PYTHONDONTWRITEBYTECODE=1
 alias ls='ls -G'
 alias ll='ls -l'
 alias tree='tree -C'
-alias pip=pip3
 
 #if [ -z "$TMUX" -a -z "$STY" ]; then
 #    if type tmux >/dev/null 2>&1; then
