@@ -32,24 +32,22 @@ set backspace=indent,eol,start
 set statusline=%<\ %f\ %m%r%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%v
 
 if has('mouse')
-  set mouse=a
+    set mouse=a
 endif
 
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/dein'))
-
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimfiler.vim')
-call dein#add('davidhalter/jedi-vim')
 call dein#add('scrooloose/syntastic')
+call dein#add('davidhalter/jedi-vim')
 call dein#add('altercation/vim-colors-solarized')
-
 call dein#end()
 
 if dein#check_install()
@@ -76,8 +74,11 @@ let g:jedi#completions_command='<C-N>'
 
 vnoremap * "zy:let @/=@z<CR>n
 
-autocmd FileType make setlocal noexpandtab
-autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd FileType xml  setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 completeopt-=preview
-
+augroup file_type
+    autocmd!
+    autocmd FileType make   setlocal noexpandtab
+    autocmd FileType xml    setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType json   setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType ruby   setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType python setlocal completeopt-=preview
+augroup END

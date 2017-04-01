@@ -7,13 +7,7 @@ alias ls='ls -G'
 alias ll='ls -l'
 alias tree='tree -C'
 
-#if [ -z "$TMUX" -a -z "$STY" ]; then
-#    if type tmux >/dev/null 2>&1; then
-#        if tmux has-session && tmux list-sessions | /usr/bin/grep -qE '.*]$'; then
-#            tmux attach && echo "tmux attached session "
-#        else
-#            tmux new-session && echo "tmux created new session"
-#        fi
-#    fi
-#fi
-
+GIT_PS1_SHOWDIRTYSTATE=true
+export PS1='\w\[\033[36m\]$(__git_ps1 [%s])\[\033[00m\]\$ '
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+source /usr/local/etc/bash_completion.d/git-completion.bash
