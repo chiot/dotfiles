@@ -10,6 +10,7 @@ set smartcase
 set ignorecase
 set cmdheight=2
 set laststatus=2
+set clipboard+=unnamed
 
 set number
 set showmatch
