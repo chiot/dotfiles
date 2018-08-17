@@ -17,10 +17,11 @@ set matchtime=1
 set cursorline
 set ruler
 set visualbell
+set noerrorbells
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set incsearch
 set hlsearch
@@ -32,11 +33,11 @@ set backspace=indent,eol,start
 set statusline=%<\ %f\ %m%r%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%v
 
 if has('mouse')
-    set mouse=a
+  set mouse=a
 endif
 
 if &compatible
-    set nocompatible
+  set nocompatible
 endif
 
 set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -46,13 +47,13 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimfiler.vim')
 call dein#add('nanotech/jellybeans.vim')
+call dein#add('justmao945/vim-clang')
 call dein#add('keith/swift.vim')
 call dein#end()
 
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
-
 
 syntax on
 set background=dark
@@ -62,17 +63,22 @@ let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable=1
 let g:unite_source_file_mru_limit=200
 let g:vimfiler_as_default_explorer=1
+let g:clang_auto=0
+let g:clang_diagsopt=''
+let g:clang_c_options='-std=c11'
+let g:clang_cpp_options='-std=c++11 -stdlib=libc++'
+let g:clang_c_completeopt='menuone'
+let g:clang_cpp_completeopt='menuone'
+let g:clang_format_auto=1
+let g:clang_format_exec='clang-format'
+let g:clang_format_styke='Google'
 
 vnoremap * "zy:let @/=@z<CR>n
 
 augroup file_type
-    autocmd!
-    filetype plugin on
-    filetype indent on
-    autocmd FileType make   setlocal noexpandtab
-    autocmd FileType xml    setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType json   setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType ruby   setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType swift  setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType python setlocal completeopt-=preview
+  autocmd!
+  filetype plugin on
+  filetype indent on
+  autocmd FileType make setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType cpp inoremap <silent> <C-n> <C-x><C-o><C-p>
 augroup END
