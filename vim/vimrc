@@ -1,36 +1,35 @@
-set textwidth=0
-set nobackup
+set ambiwidth=double
 set autoread
-set noswapfile
+set backspace=indent,eol,start
+set cino=g0
+set clipboard+=unnamed
+set colorcolumn=80
+set cursorline
+set expandtab
 set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set matchtime=1
+set nobackup
+set noerrorbells
+set noswapfile
 set nowrap
+set nowrapscan
+set number
+set ruler
+set shiftwidth=2
 set showcmd
+set showmatch
 set showmode
 set smartcase
-set ignorecase
-set laststatus=2
-set clipboard+=unnamed
-
-set number
-set showmatch
-set matchtime=1
-set cursorline
-set ruler
-set visualbell
-set noerrorbells
-
-set tabstop=2
-set shiftwidth=2
 set softtabstop=2
-set expandtab
-set incsearch
-set hlsearch
-set nowrapscan
-set colorcolumn=100
-set ambiwidth=double
-set tags+=.ctags/tags
-set backspace=indent,eol,start
 set statusline=%<\ %f\ %m%r%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%v
+set tabstop=2
+set tags+=.ctags/tags
+set textwidth=0
+set visualbell
 
 if has('mouse')
   set mouse=a
@@ -64,11 +63,11 @@ let g:unite_source_history_yank_enable=1
 let g:unite_source_file_mru_limit=200
 let g:vimfiler_as_default_explorer=1
 let g:clang_auto=0
-let g:clang_diagsopt=''
-let g:clang_c_options='-std=c11'
-let g:clang_cpp_options='-std=c++11 -stdlib=libc++'
 let g:clang_c_completeopt='menuone'
+let g:clang_c_options='-std=c14'
 let g:clang_cpp_completeopt='menuone'
+let g:clang_cpp_options='-std=c++14 -stdlib=libc++'
+let g:clang_diagsopt=''
 let g:clang_format_auto=1
 let g:clang_format_exec='clang-format'
 let g:clang_format_styke='Google'
