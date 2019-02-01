@@ -1,7 +1,6 @@
 set ambiwidth=double
 set autoread
 set backspace=indent,eol,start
-set cino=g0
 set clipboard+=unnamed
 set colorcolumn=80
 set cursorline
@@ -25,9 +24,7 @@ set showmatch
 set showmode
 set smartcase
 set softtabstop=2
-set statusline=%<\ %f\ %m%r%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%v
 set tabstop=2
-set tags+=.ctags/tags
 set textwidth=0
 set t_md=
 
@@ -45,9 +42,10 @@ call dein#begin(expand('~/.cache/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimfiler.vim')
-call dein#add('nanotech/jellybeans.vim')
 call dein#add('justmao945/vim-clang')
 call dein#add('keith/swift.vim')
+call dein#add('nanotech/jellybeans.vim')
+call dein#add('qpkorr/vim-bufkill')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#end()
@@ -60,15 +58,10 @@ syntax on
 set background=dark
 colorscheme jellybeans
 
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable=1
-let g:unite_source_file_mru_limit=200
-let g:vimfiler_as_default_explorer=1
 let g:airline_powerline_fonts=1
 let g:airline_theme='jellybeans'
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:clang_auto=0
 let g:clang_c_completeopt='menuone'
 let g:clang_c_options='-std=c14'
@@ -78,6 +71,22 @@ let g:clang_diagsopt=''
 let g:clang_format_auto=1
 let g:clang_format_exec='clang-format'
 let g:clang_format_styke='Google'
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_source_file_mru_limit=200
+let g:vimfiler_as_default_explorer=1
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
 
 vnoremap * "zy:let @/=@z<CR>n
 
